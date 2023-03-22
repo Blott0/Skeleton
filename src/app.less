@@ -20,7 +20,7 @@ body {
     }
     &::-webkit-scrollbar-thumb {
         border-radius: 10px;
-        background: red;
+        background: @color-focus;
     }
     font-family: @text-font;
     color: @color-dark-1;
@@ -51,6 +51,15 @@ h1 {
 
 ul {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
+    transition: color .25s ease-in-out;
+    color: @color-dark-1;
+    &:hover {
+        color: @color-focus;
+    }
 }
 
 .container {
@@ -130,8 +139,6 @@ header {
                 }
                 > li {
                     a, label {
-                        text-decoration: none;
-                        color: @color-dark-1;
                         text-transform: uppercase;
                         padding: 10px 0;
                         display: flex;
@@ -253,6 +260,7 @@ header {
                                 display: none;
                             }
                             &:hover {
+                                color: @color-focus;
                                 & ~ ul {
                                     transform: scaleY(1);
                                 }
@@ -273,12 +281,6 @@ header {
                                 transform: scaleY(1);
                             }
                             > li {
-                                // + li {
-                                //     margin-top: 8px;
-                                // }
-                                // &:last-of-type {
-                                //     margin-bottom: 8px;
-                                // }
                                 > label {
                                     display: none;
                                 }

@@ -66,6 +66,14 @@ h1 {
 ul {
   list-style: none;
 }
+a {
+  text-decoration: none;
+  transition: color 0.25s ease-in-out;
+  color: #1e1005;
+}
+a:hover {
+  color: red;
+}
 .container {
   margin: 0 8px;
 }
@@ -163,8 +171,6 @@ header > .container > nav > ul:has(> li > input:checked) {
 }
 header > .container > nav > ul > li a,
 header > .container > nav > ul > li label {
-  text-decoration: none;
-  color: #1e1005;
   text-transform: uppercase;
   padding: 10px 0;
   display: flex;
@@ -278,6 +284,9 @@ header > .container > .hamburger > span:nth-of-type(3) {
   }
   header > .container > nav > ul > li label::after {
     display: none;
+  }
+  header > .container > nav > ul > li label:hover {
+    color: red;
   }
   header > .container > nav > ul > li label:hover ~ ul {
     transform: scaleY(1);
