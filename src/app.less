@@ -1,0 +1,173 @@
+@import "utils";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(/static/webbender.jpg);
+    font-family: @text-font;
+    color: @color-dark-1;
+    background-color: @color-light-1;
+    > div {
+        > *:not(header) {
+            transition: filter .25s;
+        }
+    }
+    &:has(input#openmenu:checked) {
+        overflow-y: hidden;
+        > div {
+            > *:not(header) {
+                filter: blur(1.5px);
+            }
+        }
+    }
+}
+
+h1, h2, h3, h4 {
+    font-family: @header-font;
+    color: @color-dark-2;
+}
+
+.container {
+    margin: 0 8px;
+    @media (min-width: 768px) {
+        width: 752px;
+        margin: 0 auto;
+    }
+}
+
+section:nth-of-type(even) {
+    .crooked();
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: @color-light-2;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        .brand {
+            font-size: 0;
+        }
+        input {
+            display: none;
+            &#openmenu:checked {
+                & ~ .screen {
+                    transform: translateX(0);
+                    background-color: rgba(0,0,0,0.1);
+                    transition: background-color .25s ease-in-out;
+                }
+                & ~ nav {
+                    transform: translateX(0);
+                }
+                & ~ .hamburger {
+                    span {
+                        &:nth-of-type(1) {
+                            top: 18px;
+                            transform: rotate(135deg);
+                        }
+                        &:nth-of-type(2) {
+                            opacity: 0;
+                            left: -60px;
+                        }
+                        &:nth-of-type(3) {
+                            top: 18px;
+                            transform: rotate(-135deg);
+                        }
+                    }
+                }
+            }
+        }
+        nav {
+            position: fixed;
+            background-color: @color-light-2;
+            top: 0;
+            left: 0;
+            bottom:0;
+            padding: 8px;
+            transform: translateX(-100%);
+            transition: transform .25s ease-in-out;
+            ul {
+                li {
+                    a {
+                        text-decoration: none;
+                        color: @color-dark-1;
+                    }
+                }
+            }
+        }
+        .screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0);
+            transform: translateY(-100%);
+            transition: background-color .25s ease-in-out, transform 0s .25s;
+        }
+        .hamburger {
+            display: block;
+            width: 54px;
+            height: 40px;
+            position: relative;
+            cursor: pointer;
+            span {
+                display: block;
+                position: absolute;
+                height: 8px;
+                width: 100%;
+                background: @color-dark-2;
+                border-radius: 8px;
+                opacity: 1;
+                left: 0;
+                transform: rotate(0deg);
+                transition: .25s ease-in-out;
+                &:nth-of-type(1) {
+                    top: 0;
+                }
+                &:nth-of-type(2) {
+                    top: 16px;
+                }
+                &:nth-of-type(3) {
+                    top: 32px;
+                }
+            }
+        }
+    }
+}
+
+form {
+    legend {
+        padding: 8px 12px;
+        background-color: @color-dark-1;
+        color: @color-light-1;
+        font-family: @header-font;
+        font-weight: bold;
+    }
+    fieldset {
+        padding: 8px;
+        label {
+            display: grid;
+            input {
+                &#submit {
+                    display: none;
+                }
+            }
+            &:has(> input[type="radio"]) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @media (min-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}
