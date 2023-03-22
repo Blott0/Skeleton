@@ -5,6 +5,8 @@ node_modules
 /package
 /src/settings.css
 /src/utils.css
+/src/utils.less
+/src/settings.less
 .env
 .env.*
 !.env.example
