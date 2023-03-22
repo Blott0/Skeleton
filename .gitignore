@@ -7,6 +7,7 @@ node_modules
 /src/utils.css
 /src/utils.less
 /src/settings.less
+/src/header.less
 .env
 .env.*
 !.env.example
