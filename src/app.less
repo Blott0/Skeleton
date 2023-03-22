@@ -5,11 +5,26 @@
     padding: 0;
 }
 
+html {
+    
+}
+
 body {
-    background: url(/static/webbender.jpg);
+    &::-webkit-scrollbar {
+        width: 10px;
+        background-color: rgba(255,255,255,0);
+        transition: background-color .25s ease-in-out;
+        &:hover {
+            background-color: white;
+        }
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: red;
+    }
     font-family: @text-font;
     color: @color-dark-1;
-    background-color: @color-light-1;
+    overflow-y: overlay;
     > div {
         > *:not(header) {
             transition: filter .25s;
@@ -28,6 +43,14 @@ body {
 h1, h2, h3, h4 {
     font-family: @header-font;
     color: @color-dark-2;
+}
+
+h1 {
+    font-family: @header-font-main;
+}
+
+ul {
+    list-style: none;
 }
 
 .container {
@@ -49,15 +72,18 @@ header {
     right: 0;
     z-index: 1;
     background-color: @color-light-2;
-    .container {
+    transition: background-color .25s ease-in-out;
+    &.top {
+        background-color: transparent;
+    }
+    > .container {
         display: flex;
         justify-content: space-between;
-        margin-top: 8px;
-        margin-bottom: 8px;
-        .brand {
+        padding: 8px;
+        > .brand {
             font-size: 0;
         }
-        input {
+        > input {
             display: none;
             &#openmenu:checked {
                 & ~ .screen {
@@ -66,10 +92,10 @@ header {
                     transition: background-color .25s ease-in-out;
                 }
                 & ~ nav {
-                    transform: translateX(0);
+                    left: 0;
                 }
                 & ~ .hamburger {
-                    span {
+                    > span {
                         &:nth-of-type(1) {
                             top: 18px;
                             transform: rotate(135deg);
@@ -86,25 +112,84 @@ header {
                 }
             }
         }
-        nav {
+        > nav {
             position: fixed;
+            overflow-x: hidden;
             background-color: @color-light-2;
             top: 0;
-            left: 0;
+            left: -100%;
             bottom:0;
-            padding: 8px;
-            transform: translateX(-100%);
-            transition: transform .25s ease-in-out;
-            ul {
-                li {
-                    a {
+            min-width: 200px;
+            transition: left .25s ease-in-out;
+            > ul {
+                position: relative;
+                transition: transform .25s ease-in-out;
+                padding: 8px;
+                &:has(> li > input:checked) {
+                    transform: translateX(-100%);
+                }
+                > li {
+                    a, label {
                         text-decoration: none;
                         color: @color-dark-1;
+                        text-transform: uppercase;
+                        padding: 10px 0;
+                        display: flex;
+                        cursor: pointer;
+                    }
+                    > label {
+                        align-items: center;
+                        justify-content: space-between;
+                        &::after {
+                            content: '';
+                            display: inline-block;
+                            height: 0;
+                            width: 0;
+                            border: 8px solid transparent;
+                            border-left-color: @color-dark-1;
+                        }
+                    }
+                    > ul {
+                        padding: 8px;
+                        position: absolute;
+                        top: 0;
+                        left: 100%;
+                        bottom: 0;
+                        width: 100%;
+                        opacity: 0;
+                        pointer-events: none;
+                        transition: opacity 0s .25s;
+                        > li {
+                            > label {
+                                display: flex;
+                                align-items: center;
+                                &::before {
+                                    content: '';
+                                    display: inline-block;
+                                    height: 0;
+                                    width: 0;
+                                    border: 8px solid transparent;
+                                    margin-left: -8px;
+                                    margin-right: 4px;
+                                    border-right-color: @color-dark-1;
+                                }
+                            }
+                        }
+                    }
+                    > input {
+                        display: none;
+                        &:checked {
+                            + ul {
+                                opacity: 1;
+                                transition: none;
+                                pointer-events: initial;
+                            }
+                        }
                     }
                 }
             }
         }
-        .screen {
+        > .screen {
             position: fixed;
             top: 0;
             left: 0;
@@ -114,13 +199,13 @@ header {
             transform: translateY(-100%);
             transition: background-color .25s ease-in-out, transform 0s .25s;
         }
-        .hamburger {
+        > .hamburger {
             display: block;
             width: 54px;
             height: 40px;
             position: relative;
             cursor: pointer;
-            span {
+            > span {
                 display: block;
                 position: absolute;
                 height: 8px;
@@ -142,22 +227,86 @@ header {
                 }
             }
         }
+        @media (min-width: 768px) {
+            > nav {
+                overflow: initial;
+                position: initial;
+                min-width: initial;
+                background-color: initial;
+                > ul {
+                    display: flex;
+                    position: relative;
+                    padding: 0;
+                    &:has(> li > input:checked) {
+                        transform: translateX(0);
+                    }
+                    > li {
+                        a, label {
+                            text-transform: capitalize;
+                            padding: 8px;
+                        }
+                        label {
+                            &::before {
+                                display: none;
+                            }
+                            &::after {
+                                display: none;
+                            }
+                            &:hover {
+                                & ~ ul {
+                                    transform: scaleY(1);
+                                }
+                            }
+                        }
+                        > ul {
+                            left: 0;
+                            top: 100%;
+                            bottom: auto;
+                            padding: 0;
+                            background-color: white;
+                            opacity: 1;
+                            transform-origin: top;
+                            transform: scaleY(0);
+                            transition: transform .25s ease-in-out;
+                            pointer-events: initial;
+                            &:hover {
+                                transform: scaleY(1);
+                            }
+                            > li {
+                                // + li {
+                                //     margin-top: 8px;
+                                // }
+                                // &:last-of-type {
+                                //     margin-bottom: 8px;
+                                // }
+                                > label {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            > .hamburger {
+                display: none;
+            }
+        }
     }
 }
 
 form {
-    legend {
+    > legend {
         padding: 8px 12px;
         background-color: @color-dark-1;
         color: @color-light-1;
         font-family: @header-font;
         font-weight: bold;
     }
-    fieldset {
+    > fieldset {
         padding: 8px;
-        label {
+        > label {
             display: grid;
-            input {
+            > input {
                 &#submit {
                     display: none;
                 }
