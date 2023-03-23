@@ -10,34 +10,8 @@
                     <h1>Blo<span>TT</span>o</h1>
                     <h2>THE LAST WEB BENDER</h2>
                 </div>
+                <div class="arrow"><span /></div>
             </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <form action="/">
-                <fieldset>
-                    <legend>Form legend</legend>
-                    <label for="input1">label for input<input id="input1" type="text"></label>
-                    <label for="input2">label for input<input id="input2" type="text"></label>
-                    <label for="radio1">label for radio1<input id="radio1" value="1" name="radio" type="radio"></label>
-                    <label for="radio2">label for radio2<input id="radio2" value="2" name="radio" type="radio"></label>
-                    <label for="radio3">label for radio3<input id="radio3" value="3" name="radio" type="radio"></label>
-                    <label for="textarea">label for input
-                        <textarea name="textarea" id="textarea"></textarea>
-                    </label>
-                    <label for="select">label for select
-                        <select name="select" id="select">
-                            <option value="10">10</option>
-                            <option value="orange">Orange</option>
-                            <option value="volvo">Volvo</option>
-                            <option value="cat">Cat</option>
-                        </select>
-                    </label>
-                    <label for="submit">label for submit<input id="submit" type="submit"></label>
-                </fieldset>
-            </form>
         </div>
     </section>
 
@@ -60,18 +34,24 @@
         background-attachment: fixed;
         background-size: cover;
     }
+    section:nth-of-type(2) {
+        padding-bottom: 80px;
+    }
+    section:nth-of-type(2)::before {
+        content: ''
+    }
     .hero {
         height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
     }
     .wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
-        transform: translateY(-75%);
+        transform: translateY(75%);
     }
     .wrapper > h2:first-of-type {
         font-size: 20px;
@@ -80,6 +60,21 @@
     .wrapper > h2:nth-of-type(2) {
         font-size: 25px;
         margin-top: -30px;
+    }
+    .arrow {
+        background-color: rgb(30, 16, 5);
+        padding: 16px;
+        border-radius: 50% 50% 0 0;
+    }
+    .arrow > span {
+        display: block;
+        height: 0;
+        width: 0;
+        border: 10px solid transparent;
+        border-top-color: red;
+        margin-top: 2px;
+        border-bottom-width: 0;
+        transform: translateY(25%);
     }
     h1 {
         font-size: 60px;
