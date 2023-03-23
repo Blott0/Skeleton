@@ -2,8 +2,6 @@
 
 .crooked {
     position: relative;
-    // margin-top: 80px;
-    // margin-bottom: 80px;
     background-color: @color-dark-1;
     &:before {
         content: '';
@@ -26,21 +24,48 @@
     & + * {
         padding-top: 80px;
     }
-    // & + &:nth-of-type(even) {
-    //     padding: 80px 0;
-    //     background-color: @color-light-1;
-    //     color: @color-dark-1;
-    // }
-    // &:nth-of-type(even) {
-    //     &:after {
-    //         bottom: 0;
-    //         background-image: @gradient-crooked-2;
-    //     }
-    // }
-    // &:last-of-type {
-    //     padding-bottom: 0;
-    //     &:after {
-    //         display: none;
-    //     }
-    // }
+    &-top {
+        &::after {
+            display: none;
+        }
+        & + * {
+            padding-top: 0;
+        }
+    }
+    &-bottom {
+        &::before {
+            display: none;
+        }
+    }
+}
+
+.crooked-top {
+    position: relative;
+    background-color: @color-dark-1;
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -80px;
+        height: 80px;
+        width: 100%;
+        background-image: @gradient-crooked-1;
+    }
+}
+
+.crooked-bottom {
+    position: relative;
+    background-color: @color-dark-1;
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: -80px;
+        height: 80px;
+        width: 100%;
+        background-image: @gradient-crooked-2;
+    }
+    & + * {
+        padding-top: 80px;
+    }
 }
