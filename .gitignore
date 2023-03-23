@@ -5,6 +5,7 @@ node_modules
 /package
 /src/settings.css
 /src/utils.css
+/src/header.css
 /src/utils.less
 /src/settings.less
 /src/header.less
