@@ -15,6 +15,12 @@
         </div>
     </section>
 
+    <section class="title">
+        <div class="container">
+            <h2>Welcome</h2>
+        </div>
+    </section>
+
     <section>
         <div class="container">
             <h1>Header 1</h1>
@@ -34,10 +40,10 @@
         background-attachment: fixed;
         background-size: cover;
     }
-    section:nth-of-type(2) {
+    section:nth-of-type(3) {
         padding-bottom: 80px;
     }
-    section:nth-of-type(2)::before {
+    section:nth-of-type(3)::before {
         content: ''
     }
     .hero {
