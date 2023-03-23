@@ -1,5 +1,6 @@
 .crooked {
   position: relative;
+  color: #ffffeb;
   background-color: #1e1005;
 }
 .crooked:before {
@@ -34,6 +35,7 @@
 }
 .crooked-top {
   position: relative;
+  color: #ffffeb;
   background-color: #1e1005;
 }
 .crooked-top:before {
@@ -47,6 +49,7 @@
 }
 .crooked-bottom {
   position: relative;
+  color: #ffffeb;
   background-color: #1e1005;
 }
 .crooked-bottom:after {
@@ -319,6 +322,23 @@ a:hover {
 }
 section {
   background-color: #ffffeb;
+}
+section.title {
+  position: relative;
+  color: #ffffeb;
+  background-color: #1e1005;
+}
+section.title:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -80px;
+  height: 80px;
+  width: 100%;
+  background-image: linear-gradient(to top right, transparent 49.8%, #1e1005 50%);
+}
+section.title + * {
+  padding-top: 80px;
 }
 .container {
   margin: 0 8px;
