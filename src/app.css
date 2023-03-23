@@ -23,71 +23,20 @@
 .crooked + * {
   padding-top: 80px;
 }
-* {
-  margin: 0;
-  padding: 0;
+.crooked-top::after {
+  display: none;
 }
-body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: #1e1005;
-  overflow-y: overlay;
+.crooked-top + * {
+  padding-top: 0;
 }
-body::-webkit-scrollbar {
-  width: 10px;
-  background-color: rgba(255, 255, 255, 0);
-  transition: background-color 0.25s ease-in-out;
+.crooked-bottom::before {
+  display: none;
 }
-body::-webkit-scrollbar:hover {
-  background-color: white;
-}
-body::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: red;
-}
-body > div > *:not(header) {
-  transition: filter 0.25s;
-}
-body:has(input#openmenu:checked) {
-  overflow-y: hidden;
-}
-body:has(input#openmenu:checked) > div > *:not(header) {
-  filter: blur(1.5px);
-}
-h1,
-h2,
-h3,
-h4 {
-  font-family: 'papyrus', Arial, sans-serif;
-  color: #3f3227;
-}
-h1 {
-  font-family: 'Rock Salt', 'papyrus', Arial, sans-serif;
-}
-ul {
-  list-style: none;
-}
-a {
-  text-decoration: none;
-  transition: color 0.25s ease-in-out;
-  color: #1e1005;
-}
-a:hover {
-  color: red;
-}
-.container {
-  margin: 0 8px;
-}
-@media (min-width: 768px) {
-  .container {
-    width: 752px;
-    margin: 0 auto;
-  }
-}
-section:nth-of-type(even) {
+.crooked-top {
   position: relative;
   background-color: #1e1005;
 }
-section:nth-of-type(even):before {
+.crooked-top:before {
   content: '';
   display: block;
   position: absolute;
@@ -96,7 +45,11 @@ section:nth-of-type(even):before {
   width: 100%;
   background-image: linear-gradient(to bottom left, transparent 49.8%, #1e1005 50%);
 }
-section:nth-of-type(even):after {
+.crooked-bottom {
+  position: relative;
+  background-color: #1e1005;
+}
+.crooked-bottom:after {
   content: '';
   display: block;
   position: absolute;
@@ -105,7 +58,7 @@ section:nth-of-type(even):after {
   width: 100%;
   background-image: linear-gradient(to top right, transparent 49.8%, #1e1005 50%);
 }
-section:nth-of-type(even) + * {
+.crooked-bottom + * {
   padding-top: 80px;
 }
 header {
@@ -313,6 +266,69 @@ header > .container > .hamburger > span:nth-of-type(3) {
     display: none;
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #1e1005;
+  overflow-y: overlay;
+}
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  transition: background-color 0.25s ease-in-out;
+}
+body::-webkit-scrollbar:hover {
+  background-color: white;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: red;
+}
+body > div > *:not(header) {
+  transition: filter 0.25s;
+}
+body:has(input#openmenu:checked) {
+  overflow-y: hidden;
+}
+body:has(input#openmenu:checked) > div > *:not(header) {
+  filter: blur(1.5px);
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'papyrus', Arial, sans-serif;
+  color: #3f3227;
+}
+h1 {
+  font-family: 'Rock Salt', 'papyrus', Arial, sans-serif;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  transition: color 0.25s ease-in-out;
+  color: #1e1005;
+}
+a:hover {
+  color: red;
+}
+section {
+  background-color: #ffffeb;
+}
+.container {
+  margin: 0 8px;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 752px;
+    margin: 0 auto;
+  }
+}
 form > legend {
   padding: 8px 12px;
   background-color: #1e1005;
@@ -336,4 +352,50 @@ form > fieldset > label:has(> input[type="radio"]) {
   form > fieldset > label {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+footer > .main-footer {
+  background-color: #1e1005;
+  color: #ffffeb;
+  position: relative;
+  margin-bottom: 20px;
+}
+footer > .main-footer:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -80px;
+  height: 80px;
+  width: 100%;
+  background-image: linear-gradient(to bottom left, transparent 49.8%, #1e1005 50%);
+}
+footer > .main-footer:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -80px;
+  height: 80px;
+  width: 100%;
+  background-image: linear-gradient(to top right, transparent 49.8%, #1e1005 50%);
+}
+footer > .main-footer + * {
+  padding-top: 80px;
+}
+footer > .main-footer-top::after {
+  display: none;
+}
+footer > .main-footer-top + * {
+  padding-top: 0;
+}
+footer > .main-footer-bottom::before {
+  display: none;
+}
+footer > .under-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+footer > .under-footer > .container {
+  padding: 8px 0;
 }
