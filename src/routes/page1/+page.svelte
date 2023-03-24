@@ -134,6 +134,9 @@ pre::after {
     inset: 0;
     transform: scale(2);
 }
+pre > * {
+    text-shadow: 0 0 6px currentColor;
+}
 pre > span.yellow {
     color: rgb(229 216 101);
 }
