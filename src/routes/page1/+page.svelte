@@ -35,6 +35,8 @@
 
 <svelte:window bind:scrollY bind:innerHeight bind:innerWidth on:mousemove="{e=>registerMousePos(e)}" on:touchmove="{e=>registerMousePos(e)}"/>
 
+<section class="crooked-bottom-light" />
+
 <section>
     <div class="container">
         <div class="cardwrapper">
@@ -68,7 +70,10 @@
     0% { --gradient-angle: 0deg; }
     100% { --gradient-angle: 360deg; }
 }
-section {
+section:first-of-type {
+    height: 40px;
+}
+section:nth-of-type(2) {
     background-color: rgb(10 6 2);
     overflow-x: hidden;
 }
@@ -88,11 +93,6 @@ section {
     aspect-ratio: 9/16;
     border-radius: .5rem;
     transform-style: preserve-3d;
-    /* grid-template-columns: repeat(2,1fr);
-    grid-template-rows: repeat(3,1fr);
-    grid-template-areas: "a b"
-        "c c"
-        "d e"; */
 }
 .card::before, .card::after {
     position: absolute;
@@ -114,20 +114,9 @@ section {
     place-content: center;
     transform-style: preserve-3d;
 }
-/* .card > :global(svg) {
-    width: 60px;
-    height: 60px;
-    transform: translateZ(50px);
-    align-self: center;
-    justify-self: center;
-} */
 pre {
     color: white;
-    /* text-shadow: 0 0 2px white; */
     transform: translateZ(50px);
-    /* grid-area: c;
-    align-self: center;
-    justify-self: center; */
 }
 pre::after {
     content: '';
@@ -146,15 +135,4 @@ pre > span.blue {
 pre > span.orange {
     color: orange;
 }
-/* .card::after {
-    position: absolute;
-    background-color: rgba(0,0,0,.2);
-    content: '';
-    inset: .2rem;
-    z-index: 1;
-    border-radius: inherit;
-    animation: rotation 12s linear infinite;
-    transform: translateZ(-200px);
-    filter: blur(1rem);
-} */
 </style>
