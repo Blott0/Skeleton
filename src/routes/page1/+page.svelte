@@ -41,14 +41,16 @@
             <div bind:this="{card}" class="card" style="transform: perspective(5000px) translateZ(200px) rotateY({relativePos[0]}deg) rotateX({relativePos[1]}deg);">
                 <!-- <Imagechest />
                 <Imagewand /> -->
-                <pre>
+                <div class="card-screen" style="background-image: linear-gradient({120 - relativePos[0]}deg, black {relativePos[1] * 4 - 20}%, rgb(20,20,20) {relativePos[1] * 4}%, black {relativePos[1] * 4 + 20}%)">
+                    <pre>
 <span class="yellow">design</span> {"{"}
     <span class="blue">responsive</span>: <span class="orange">'mobile-first'</span>{";"}
 {"}"}
 <span class="yellow">box > thinking</span> {"{"}
     <span class="blue">position</span>: outside{";"}
 {"}"}
-                </pre>
+                    </pre>
+                </div>
                 <!-- <Imagediamond />
                 <Imageprize /> -->
             </div>
@@ -86,8 +88,6 @@ section {
     aspect-ratio: 9/16;
     border-radius: .5rem;
     transform-style: preserve-3d;
-    display: grid;
-    place-content: center;
     /* grid-template-columns: repeat(2,1fr);
     grid-template-rows: repeat(3,1fr);
     grid-template-areas: "a b"
@@ -106,6 +106,12 @@ section {
 }
 .card::before {
     filter: blur(3rem);
+}
+.card-screen {
+    position: absolute;
+    inset: 1rem;
+    display: grid;
+    place-content: center;
 }
 /* .card > :global(svg) {
     width: 60px;
