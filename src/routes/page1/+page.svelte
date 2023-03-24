@@ -112,6 +112,7 @@ section {
     inset: 1rem;
     display: grid;
     place-content: center;
+    transform-style: preserve-3d;
 }
 /* .card > :global(svg) {
     width: 60px;
